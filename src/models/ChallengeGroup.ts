@@ -12,7 +12,7 @@ class ChallengeGroup extends Model<ChallengeGroup> {
   @Column({ type: DataType.DOUBLE, defaultValue: 0 })
   total_achievement!: number;
 
-  @HasMany(() => Challenge, 'challenges')
+  @HasMany(() => Challenge, 'challenge_group_id')
   challenges: Challenge[] | undefined;
 }
 

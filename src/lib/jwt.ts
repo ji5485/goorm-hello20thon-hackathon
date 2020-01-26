@@ -3,7 +3,6 @@ dotenv.config();
 
 import jwt from 'jsonwebtoken';
 import { Next } from 'koa';
-import '../models/User';
 import User from '../models/User';
 
 const secret: any = process.env.JWT_SECRET;

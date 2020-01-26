@@ -8,8 +8,9 @@ import {
   HasMany,
 } from 'sequelize-typescript';
 import bcrypt from 'bcryptjs';
-import { generateToken } from '../lib/jwtFunctions';
+import { generateToken } from '../lib/jwt';
 import Challenge from './Challenge';
+import Certification from './Cerfitication';
 
 const BCRYPT_ROUND: number = 10;
 
@@ -31,8 +32,11 @@ class User extends Model<User> {
   @Column({ type: DataType.INTEGER, defaultValue: 0 })
   money!: number;
 
-  @HasMany(() => Challenge, 'challenges')
+  @HasMany(() => Challenge, 'user_id')
   challenges: Challenge[] | undefined;
+
+  @HasMany(() => Certification, 'user_id')
+  certifications: Certification[] | undefined;
 
   @BeforeCreate
   static async savePassword(instance: User): Promise<void> {

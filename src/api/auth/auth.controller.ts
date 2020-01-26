@@ -1,10 +1,9 @@
-import { Context } from 'koa';
 import Joi from '@hapi/joi';
 import User from '../../models/User';
-import generateResponse from '../../lib/generateResponse';
+import { generateResponse } from '../../lib/utils';
 import { Op } from 'sequelize';
 
-export const register = async (ctx: Context) => {
+export const register = async (ctx: any) => {
   // Validate Request Body
   const schema = Joi.object({
     email: Joi.string()
@@ -38,9 +37,9 @@ export const register = async (ctx: Context) => {
     ctx.status = 409;
     ctx.body = generateResponse(
       false,
-      `User already exists (${
+      `This ${
         existingUser.email === email ? 'email' : 'username'
-      } conflict)`,
+      } already exists.`,
       null,
     );
     return;
@@ -58,7 +57,7 @@ export const register = async (ctx: Context) => {
   ctx.body = generateResponse(true, null, user);
 };
 
-export const login = async (ctx: Context) => {
+export const login = async (ctx: any) => {
   // Validate Request Body
   const schema = Joi.object({
     email: Joi.string()
@@ -88,7 +87,7 @@ export const login = async (ctx: Context) => {
 
   if (!user || !user.validatePassword(password)) {
     ctx.status = 403;
-    ctx.body = generateResponse(false, 'Invalid User Info', null);
+    ctx.body = generateResponse(false, 'Email or password is invalid.', null);
     return;
   }
 
@@ -97,23 +96,23 @@ export const login = async (ctx: Context) => {
 
   try {
     token = await user.generateToken();
+
+    ctx.cookies.set('access_token', token, {
+      maxAge: 1000 * 60 * 60 * 24 * 3,
+      httpOnly: true,
+    });
+    ctx.body = generateResponse(true, null, {
+      id: user.id,
+      email: user.email,
+      username: user.username,
+      money: user.money,
+    });
   } catch (e) {
     ctx.throw(500, e);
   }
-
-  ctx.cookies.set('access_token', token, {
-    maxAge: 1000 * 60 * 60 * 24 * 3,
-    httpOnly: true,
-  });
-  ctx.body = generateResponse(true, null, {
-    id: user.id,
-    email: user.email,
-    username: user.username,
-    money: user.money,
-  });
 };
 
-export const logout = async (ctx: Context) => {
+export const logout = async (ctx: any) => {
   ctx.cookies.set('access_token', '', {
     maxAge: 0,
     httpOnly: true,
@@ -121,45 +120,3 @@ export const logout = async (ctx: Context) => {
   ctx.status = 204;
   ctx.body = generateResponse(true, null, null);
 };
-
-// export const getBookList = async (ctx: Context) => {
-//   let book;
-
-//   try {
-//     book = await Book.findAll();
-//   } catch (e) {
-//     console.warn(e);
-//   }
-
-//   ctx.body = book;
-// };
-
-// export const saveBookInfo = async (ctx: Context) => {
-//   const schema = Joi.object({
-//     name: Joi.string().required(),
-//     author: Joi.string().required(),
-//     price: Joi.number()
-//       .integer()
-//       .required(),
-//     page: Joi.number()
-//       .integer()
-//       .required(),
-//   });
-
-//   const result = schema.validate(ctx.request.body);
-
-//   if (result.error) {
-//     ctx.status = 400;
-//     return;
-//   }
-
-//   let book;
-
-//   try {
-//     book = await Book.create(ctx.request.body);
-//   } catch (e) {
-//     ctx.throw(500, e);
-//   }
-
-//   ctx.body = book;
-// };
