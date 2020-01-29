@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MainPage(withLogin)</title>
+    <link rel="stylesheet" href="css/firstMainBG.css">
+    <link rel="stylesheet" href="css/firstMainNav.css">
+    <script type="text/javascript" src="calendar.js"></script>
+</head>
+
+<body>
+    <div class="main">
+        <nav class="mainNav">
+            <span class="mainNavLogo">작 심 3 1</span>
+            <ul class="mainNavMenu">
+                <li>Home</li>
+                <li>Calendar</li>
+                <li>Graph</li>
+                <li>Refund</li>
+            </ul>
+        </nav>
+        <table id="calendar" border="3" style="border-color:#3333FF ">
+            <div class="tbtop">
+                <span><label onclick="prevCalendar()">prev</label></span>
+                <span id="tbCalendarYM"></span>
+                <span id="tbCalendarYMStr"></span>
+                <span><label onclick="nextCalendar()">next</label></span>
+            </div class="tbtop">
+            <tr>
+                <td align="center">
+                    <font color="#F79DC2">S
+                </td>
+                <td align="center">M</td>
+                <td align="center">T</td>
+                <td align="center">W</td>
+                <td align="center">T</td>
+                <td align="center">F</td>
+                <td align="center">
+                    <font color="skyblue">S
+                </td>
+            </tr>
+        </table>
+        <script language="javascript" type="text/javascript">
+            buildCalendar(); //
+        </script>
+    </div>
+</body>
+
+</html>

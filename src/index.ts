@@ -8,6 +8,7 @@ import api from './api';
 import { sequelize } from './sequelize';
 import clc from 'cli-color';
 import views from 'koa-views';
+import serve from 'koa-static';
 
 const app = new Koa();
 const router = new Router();
@@ -18,13 +19,21 @@ app
       extension: 'ejs',
     }),
   )
-  .use(BodyParser({ multipart: true }))
+  .use(
+    BodyParser({
+      multipart: true,
+      formidable: { maxFileSize: 1024 * 1024 * 10 },
+    }),
+  )
   .use(Logger())
   .use(Helmet())
   .use(jwtMiddleware)
+  .use(serve(__dirname + '/static'))
   .use(router.routes())
   .use(router.allowedMethods());
-router.use('/api', api.routes());
+router
+  .get('/', (ctx: any) => ctx.render(ctx.request.user ? 'Main' : 'Login'))
+  .use('/api', api.routes());
 
 const { green, red } = clc;
 const PORT: string | number = process.env.SERVER_PORT || 4000;
