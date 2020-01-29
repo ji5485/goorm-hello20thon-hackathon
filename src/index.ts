@@ -7,18 +7,24 @@ import { jwtMiddleware } from './lib/jwt';
 import api from './api';
 import { sequelize } from './sequelize';
 import clc from 'cli-color';
+import views from 'koa-views';
 
 const app = new Koa();
 const router = new Router();
 
-router.use('/api', api.routes());
 app
+  .use(
+    views(__dirname + '/views', {
+      extension: 'ejs',
+    }),
+  )
   .use(BodyParser({ multipart: true }))
   .use(Logger())
   .use(Helmet())
   .use(jwtMiddleware)
   .use(router.routes())
   .use(router.allowedMethods());
+router.use('/api', api.routes());
 
 const { green, red } = clc;
 const PORT: string | number = process.env.SERVER_PORT || 4000;
