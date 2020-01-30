@@ -8,7 +8,8 @@
     <title>MainPage(withLogin)</title>
     <link rel="stylesheet" href="css/firstMainBG.css">
     <link rel="stylesheet" href="css/firstMainNav.css">
-    <script type="text/javascript" src="calendar.js"></script>
+    <link rel="stylesheet" href="css/secondMainCalendar.css">
+    <script type="text/javascript" src="js/calendar.js"></script>
 </head>
 
 <body>
@@ -22,7 +23,7 @@
                 <li>Refund</li>
             </ul>
         </nav>
-        <table id="calendar" border="3" style="border-color:#3333FF ">
+        <table id="calendar">
             <div class="tbtop">
                 <span><label onclick="prevCalendar()">prev</label></span>
                 <span id="tbCalendarYM"></span>
@@ -30,22 +31,18 @@
                 <span><label onclick="nextCalendar()">next</label></span>
             </div class="tbtop">
             <tr>
-                <td align="center">
-                    <font color="#F79DC2">S
-                </td>
-                <td align="center">M</td>
-                <td align="center">T</td>
-                <td align="center">W</td>
-                <td align="center">T</td>
-                <td align="center">F</td>
-                <td align="center">
-                    <font color="skyblue">S
-                </td>
+                <td>S</td>
+                <td>M</td>
+                <td>T</td>
+                <td>W</td>
+                <td>T</td>
+                <td>F</td>
+                <td>S</td>
             </tr>
+            <script language="javascript" type="text/javascript">
+                buildCalendar(); //
+            </script>
         </table>
-        <script language="javascript" type="text/javascript">
-            buildCalendar(); //
-        </script>
     </div>
 </body>
 
