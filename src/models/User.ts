@@ -10,7 +10,7 @@ import {
 import bcrypt from 'bcryptjs';
 import { generateToken } from '../lib/jwt';
 import Challenge from './Challenge';
-import Certification from './Cerfitication';
+import Certification from './Certification';
 
 const BCRYPT_ROUND: number = 10;
 

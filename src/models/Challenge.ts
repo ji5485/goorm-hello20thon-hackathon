@@ -10,7 +10,7 @@ import {
 import User from './User';
 import Category from './Category';
 import ChallengeGroup from './ChallengeGroup';
-import Certification from './Cerfitication';
+import Certification from './Certification';
 
 @Table({ timestamps: true })
 class Challenge extends Model<Challenge> {

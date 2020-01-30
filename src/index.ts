@@ -10,6 +10,8 @@ import clc from 'cli-color';
 import views from 'koa-views';
 import serve from 'koa-static';
 import { join } from 'path';
+import cron from 'node-cron';
+import checkChallengeGroup from './lib/cronjob';
 
 const app = new Koa();
 const router = new Router();
@@ -37,7 +39,7 @@ app
   .use(router.routes())
   .use(router.allowedMethods());
 router
-  .get('/', (ctx: any) => ctx.render(ctx.request.user ? 'Login' : 'Main'))
+  .get('/', (ctx: any) => ctx.render(ctx.request.user ? 'Main' : 'Login'))
   .use('/api', api.routes());
 
 const { green, red } = clc;
@@ -56,6 +58,9 @@ sequelize
           `[Server] Koa Backend Server is Listening on Port ${PORT} Successfully`,
         ),
       );
+
+      // 0 0 * * * -> At 00:00 EveryDay
+      cron.schedule('* * * * *', checkChallengeGroup);
     });
   })
   .catch(() => {

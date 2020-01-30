@@ -83,14 +83,14 @@ export const createChallenge = async (ctx: any) => {
 
 export const giveUpChallenge = async (ctx: any) => {
   const { id } = ctx.params;
-  const { user } = ctx.request;
+  const { id: user_id } = ctx.request.user;
 
   // Find Challenge Through Challenge ID and User ID
   let challenge;
 
   try {
     challenge = await Challenge.findOne({
-      where: { [Op.and]: [{ id }, { user_id: user.id }] },
+      where: { [Op.and]: [{ id }, { user_id }] },
     });
   } catch (e) {
     ctx.throw(500, e);

@@ -14,5 +14,10 @@ certification.post(
   checkLoggedIn,
   certificationController.registerCertification,
 );
+certification.post(
+  '/verification',
+  checkLoggedIn,
+  certificationController.setCertificationVerification,
+);
 
 export default certification;
