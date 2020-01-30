@@ -9,20 +9,25 @@ import { sequelize } from './sequelize';
 import clc from 'cli-color';
 import views from 'koa-views';
 import serve from 'koa-static';
+import { join } from 'path';
 
 const app = new Koa();
 const router = new Router();
 
 app
   .use(
-    views(__dirname + '/views', {
+    views(join(__dirname, '/views'), {
       extension: 'ejs',
     }),
   )
   .use(
     BodyParser({
       multipart: true,
-      formidable: { maxFileSize: 1024 * 1024 * 10 },
+      formidable: {
+        maxFileSize: 1024 * 1024 * 10,
+        uploadDir: join(__dirname, '../uploads'),
+        keepExtensions: true,
+      },
     }),
   )
   .use(Logger())
@@ -32,7 +37,7 @@ app
   .use(router.routes())
   .use(router.allowedMethods());
 router
-  .get('/', (ctx: any) => ctx.render(ctx.request.user ? 'Main' : 'Login'))
+  .get('/', (ctx: any) => ctx.render(ctx.request.user ? 'Login' : 'Main'))
   .use('/api', api.routes());
 
 const { green, red } = clc;
