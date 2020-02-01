@@ -1,20 +1,30 @@
 <!DOCTYPE html>
-<html lang="kr">
-<!-- 768px -->
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>MainPage(withoutLogin)</title>
-    <link rel="stylesheet" href="css/firstMainBG.css">
-    <link rel="stylesheet" href="css/firstMainNav.css">
-    <link rel="stylesheet" href="css/firstMainBody.css">
+    <title>MainPage(withLogin)</title>
+    <link rel="stylesheet" href="css/secondMainBG.css">
+    <link rel="stylesheet" href="css/secondMainNav.css">
+    <link rel="stylesheet" href="css/secondMainBody.css">
+    <link rel="stylesheet" href="css/secondMainCalendar.css">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
+    <script>
+        function showPopup() {
+            window.open("../challengeCreate.html", "width=400, height=300, left=100, top=50");
+        }
+    </script>
+    <script type="text/javascript" src="js/calendar.js"></script>
+    <link rel="stylesheet" href="chart.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/theus/chart.css/v1.0.0/dist/chart.css" />
 </head>
 
 <body>
     <div class="main">
+        <div class="background"></div>
         <div class="mainNav">
             <div class="mainNavLogo">작 심 3 1</div>
             <div class="mainNavMenu">
@@ -26,20 +36,50 @@
             </div>
         </div>
         <div class="mainBody">
-            <div class="mainBodyLeft">
-                <div class="mainBodyLeftTitle">We'll help you suecceed.<br>Experience 31 Days of Change!</div>
-                <div class="mainBodyLeftContent">매해 다짐만 해놓고 달성은 못했던 목표가 있으신가요?<br>목표 달성을 위해 계획한대로 실행도 해보았지만<br> 얼마 못가
-                    포기한적이
-                    있으신가요?
-                    <br><br>급할 필요 없어요. 하루가 모여 한달이 되고, 한달이 모여 일년이 되듯,<br>당신의 작은 성취가 쌓여 목표를 달성할 수 있도록 작심31이 함께 도울게요.</div>
+            <div>
+                <div class="tbtop">
+                    <img src="img/calendarIcon.svg" alt="">
+                    <span id="tbCalendarYM"></span>
+                    <span id="tbCalendarYMStr"></span>
+                    <span id="tbCalendarY"></span>
+                    <span><label onclick="prevCalendar()">
+                            <</label> </span> <span><label onclick="nextCalendar()">></label></span>
+                </div>
+                <table id="calendar">
+                    <tr>
+                        <td>Sun</td>
+                        <td>Mon</td>
+                        <td>Tue</td>
+                        <td>Wed</td>
+                        <td>Thr</td>
+                        <td>Fri</td>
+                        <td>Sat</td>
+                    </tr>
+                    <script language="javascript" type="text/javascript">
+                        buildCalendar();
+                    </script>
+                </table>
             </div>
-                <form class="mainBodyRight">
-                    <div><label>Username<br><input type="text" ></label></div>
-                    <div><label>Email<br><input type="text"></label></div>
-                    <div><label>Password<br><input type="text"></label></div>
-                    <input class="mainBodyRightSubmit" type="submit" title="회원가입"
-                                value="Sign up for 작심31">
-                </form>
+            <div class="challenge">
+                <div class="challengeList">Challenge List</div>
+                <div class="challengeContent">
+                    <div class="challengeContainer1">
+                        <div class="challengeNum">CH 1</div>
+                        <div class="challengeDate">02.01</div>
+                    </div>
+                    <div class="challengeContainer2">
+                        <div class="challengeTitle">일주일에 책 한 권씩 읽기.</div>
+                        <div class="charts">
+                            <span class="rowChart"></span>
+                        </div>
+                        <span class="chartPercent">00%</span>
+                    </div>
+                    <img src="img/challengePic.svg" alt="">
+                </div>
+                <div class="challengeUpload">
+                    <a href="javascript:showPopup()"><img src="img/challengeUploadBtn.svg" alt=""></a>
+                </div>
+            </div>
         </div>
     </div>
 </body>
