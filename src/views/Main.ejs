@@ -6,44 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MainPage(withLogin)</title>
-    <link rel="stylesheet" href="css/firstMainBG.css">
-    <link rel="stylesheet" href="css/firstMainNav.css">
+    <link rel="stylesheet" href="css/secondMainBG.css">
+    <link rel="stylesheet" href="css/secondMainNav.css">
+    <link rel="stylesheet" href="css/secondMainBody.css">
     <link rel="stylesheet" href="css/secondMainCalendar.css">
-    <link rel="stylesheet" href="css/tmp.css">
     <script type="text/javascript" src="js/calendar.js"></script>
 </head>
 
 <body>
     <div class="main">
-        <nav class="mainNav">
-            <span class="mainNavLogo">작 심 3 1</span>
-            <ul class="mainNavMenu">
-                <li>Home</li>
-                <li>Calendar</li>
-                <li>Graph</li>
-                <li>Refund</li>
-            </ul>
-        </nav>
-        <table id="calendar">
-            <div class="tbtop">
-                <span><label onclick="prevCalendar()">prev</label></span>
-                <span id="tbCalendarYM"></span>
-                <span id="tbCalendarYMStr"></span>
-                <span><label onclick="nextCalendar()">next</label></span>
-            </div class="tbtop">
-            <tr>
-                <td>S</td>
-                <td>M</td>
-                <td>T</td>
-                <td>W</td>
-                <td>T</td>
-                <td>F</td>
-                <td>S</td>
-            </tr>
-            <script language="javascript" type="text/javascript">
-                buildCalendar(); //
-            </script>
-        </table>
+        <div class="background"></div>
+        <div class="mainNav">
+            <div class="mainNavLogo">작 심 3 1</div>
+            <div class="mainNavMenu">
+                <div>Home</div>
+                <div>Calendar</div>
+                <div>Graph</div>
+                <div>Refund</div>
+            </div>
+        </div>`
+        <div class="mainBody">
+            <div>
+                <div class="tbtop">
+                    <img src="img/calendarIcon.svg" alt="">
+                    <span id="tbCalendarYM"></span>
+                    <span id="tbCalendarYMStr"></span>
+                    <span id="tbCalendarY"></span>
+                    <span><label onclick="prevCalendar()">
+                            <</label> </span> <span><label onclick="nextCalendar()">></label></span>
+                </div>
+                <table id="calendar">
+                    <tr>
+                        <td>Sun</td>
+                        <td>Mon</td>
+                        <td>Tue</td>
+                        <td>Wed</td>`
+                        <td>Thr</td>
+                        <td>Fri</td>
+                        <td>Sat</td>
+                    </tr>
+                    <script language="javascript" type="text/javascript">
+                        buildCalendar();
+                    </script>
+                </table>
+            </div>
+            <div class="challenge">
+                asdfsd
+            </div>
+        </div>
     </div>
 </body>
 
