@@ -27,16 +27,40 @@ body {
 }
 
 .loginBody{
-    display : inline-block;
-    border : 1px solid #cccccc;
+    padding : 1% 5% 0 5%;
+    display : inline-block;    
+    border : 3px solid #d5ded7;  
     width : 50%;
 }
 
+
+.loginBody input[type="text"], input[type="password"]{
+    display : block;
+    height : 30px;
+    width : 100%;
+    border-radius : 10px;
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    box-sizing: border-box;
+}
+.loginBody input[type="submit"]{
+    width : 80%;
+    border-radius : 10px;
+    height : 40px;
+    background : linear-gradient(to bottom, #00C4EF,#0091FF);
+    color : white;
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    box-sizing: border-box;
+}
+
 .loginFoot{
+    margin-top : 1%;
     display : inline-block;
-    border : 1px solid #cccccc;
+    border : 3px solid #d5ded7;  
     width : 50%;
 }
+
 a{
     color : #0081f8;
     text-decoration: none
