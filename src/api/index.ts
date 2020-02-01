@@ -10,7 +10,7 @@ api.use('/challenge', challenge.routes());
 api.use('/certification', certification.routes());
 
 import Category from '../models/Category';
-api.use('/', async (ctx: any) => {
+api.get('/', async (ctx: any) => {
   for (let i = 0; i < 3; i++) {
     await Category.create({ name: `Test Category ${i}` });
   }

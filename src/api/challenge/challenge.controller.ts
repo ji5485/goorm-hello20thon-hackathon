@@ -22,6 +22,8 @@ export const getChallengeList = async (ctx: any) => {
 };
 
 export const createChallenge = async (ctx: any) => {
+  const { user } = ctx.request;
+
   // Validate Request Form
   const schema = Joi.object({
     name: Joi.string().required(),
@@ -67,9 +69,15 @@ export const createChallenge = async (ctx: any) => {
       defaults: {
         start_date: payload.start_date,
         price: payload.price,
+        status:
+          new Date(payload.start_date).getTime() <= new Date().getTime()
+            ? 'ONGOING'
+            : 'WAITING',
       },
+      transaction,
     });
     await challenge.$set('challenge_group', challengeGroup[0], { transaction });
+    await challengeGroup[0].$add('user', user, { transaction });
 
     transaction.commit();
   } catch (e) {
