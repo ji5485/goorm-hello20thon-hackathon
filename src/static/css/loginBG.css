@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    padding: 3% 0% 3% 5%;
+    background-color: #0081f8;
+}
+
+.main {
+    font-family: "Noto Sans KR", sans-serif;
+    background-color: white;
+    width: 94%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+.mainBody{
+    text-align : center;
+}
+
+.loginBody{
+    display : inline-block;
+    border : 1px solid #cccccc;
+    width : 50%;
+}
+
+.loginFoot{
+    display : inline-block;
+    border : 1px solid #cccccc;
+    width : 50%;
+}
+a{
+    color : #0081f8;
+    text-decoration: none
+}
+
