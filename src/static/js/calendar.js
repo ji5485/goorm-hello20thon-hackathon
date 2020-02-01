@@ -17,37 +17,36 @@ function buildCalendar() { //현재 달 달력 만들기
     var tbCalendar = document.getElementById("calendar");
     var tbCalendarYM = document.getElementById("tbCalendarYM");
     var tbCalendarYMStr = document.getElementById("tbCalendarYMStr");
+    
     var curMonth = (today.getMonth() + 1);
-    tbCalendarYM.innerHTML = (today.getMonth() + 1);
     if (curMonth == 1) {
-        tbCalendarYMStr.innerHTML = "January";
+        tbCalendarYMStr.innerHTML = "January "+ today.getFullYear();
     } else if (curMonth == 2) {
-        tbCalendarYMStr.innerHTML = "February";
+        tbCalendarYMStr.innerHTML = "February " + today.getFullYear();
     } else if (curMonth == 3) {
-        tbCalendarYMStr.innerHTML = "March";
+        tbCalendarYMStr.innerHTML = "March "+ today.getFullYear();
     } else if (curMonth == 4) {
-        tbCalendarYMStr.innerHTML = "April";
+        tbCalendarYMStr.innerHTML = "April " + today.getFullYear();
     } else if (curMonth == 5) {
-        tbCalendarYMStr.innerHTML = "May";
+        tbCalendarYMStr.innerHTML = "May " + today.getFullYear();
     } else if (curMonth == 6) {
-        tbCalendarYMStr.innerHTML = "June";
+        tbCalendarYMStr.innerHTML = "June " + today.getFullYear();
     } else if (curMonth == 7) {
-        tbCalendarYMStr.innerHTML = "July";
+        tbCalendarYMStr.innerHTML = "July " + today.getFullYear();
     } else if (curMonth == 8) {
-        tbCalendarYMStr.innerHTML = "August";
+        tbCalendarYMStr.innerHTML = "August " + today.getFullYear();
     } else if (curMonth == 9) {
-        tbCalendarYMStr.innerHTML = "September";
+        tbCalendarYMStr.innerHTML = "September " + today.getFullYear();
     } else if (curMonth == 10) {
-        tbCalendarYMStr.innerHTML = "October";
+        tbCalendarYMStr.innerHTML = "October " + today.getFullYear();
     } else if (curMonth == 11) {
-        tbCalendarYMStr.innerHTML = "November";
+        tbCalendarYMStr.innerHTML = "November " + today.getFullYear();
     } else {
-        tbCalendarYMStr.innerHTML = "December";
+        tbCalendarYMStr.innerHTML = "December " + today.getFullYear();
     }
     /*while은 이번달이 끝나면 다음달로 넘겨주는 역할*/
     while (tbCalendar.rows.length > 1) {
         //열을 지워줌
-        //기본 열 크기는 body 부분에서 2로 고정되어 있다.
         tbCalendar.deleteRow(tbCalendar.rows.length - 1);
         //테이블의 tr 갯수 만큼의 열 묶음은 -1칸 해줘야지 
         //30일 이후로 담을달에 순서대로 열이 계속 이어진다.
@@ -88,7 +87,7 @@ function buildCalendar() { //현재 달 달력 만들기
             today.getMonth() == date.getMonth() &&
             i == date.getDate()) {
             //달력에 있는 년,달과 내 컴퓨터의 로컬 년,달이 같고, 일이 오늘의 일과 같으면
-            cell.bgColor = "#FAF58C"; //셀의 배경색을 노랑으로 
+            cell.bgColor = "#0081f8"; //셀의 배경색을 노랑으로 
         }
     }
 }
