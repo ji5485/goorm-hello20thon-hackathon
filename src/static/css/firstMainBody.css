@@ -2,20 +2,19 @@
     width : 100%;
     height : 90%;
     display:flex;
+    justify-content: space-between;
+    padding: 0 30px;
 }
 
 .mainBodyLeft{
-    width : 40%;
+    width : 50%;
     height : 100%;
-    margin-left : 5%;
-    margin-right : 10%;
 }
 
 .mainBodyLeftTitle{
     font-size : 250%;
+    padding-bottom : 5%;
     font-weight : bold;
-    margin-top : 10%;
-    margin-bottom : 5%;
 }
 
 .mainBodyLeftContent{
@@ -23,29 +22,57 @@
 }
 
 .mainBodyRight{
-    width : 30%;
-    height : 80%;
-    margin-top : 5%;
-    margin-left : 10%;
-    border : 3px solid gray;    
+    display : flex;
+    flex-direction : column;
+    align-items: center;
+    font-size : 120%;
+    width : 40%;
+    height : 70%;
+    border : 3px solid #d5ded7;  
+    padding: 20px;
 }
 
-.mainBodyRight ul{
-    list-style-type : none;
+.mainBodyRight div{
+    width: 100%;
+    padding : 1% 0 5% 0;
 }
 
-.mainBodyRight ul li{
-    margin-bottom : 10%;
-    font-size : 150%;
+.mainBodyRight input[type="text"]{
+    display : block;
+    height : 30px;
+    width : 100%;
+    border-radius : 10px;
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    box-sizing: border-box;
 }
 
+.mainBodyRight input[type="submit"]{
+    width : 80%;
+    border-radius : 10px;
+    height : 40px;
+    background-color : #0081f8;
+    color : white;
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    box-sizing: border-box;
+}
 .mainBodyRight.mainBodyRightSubmit{
     border : none !important;
     color : red;    
-    background-color : blue;
+    background : blue;
 }
 
 input{
     border-radius : 20px;
     height : 20%;
+}
+
+@media(max-width : 768px){
+    .mainBodyLeftTitle{
+        font-size : 140%; 
+    }
+    .mainBodyLeftContent{
+        font-size : 120%;
+    }
 }
