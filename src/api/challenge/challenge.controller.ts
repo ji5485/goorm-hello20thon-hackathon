@@ -77,7 +77,6 @@ export const createChallenge = async (ctx: any) => {
       transaction,
     });
     await challenge.$set('challenge_group', challengeGroup[0], { transaction });
-    await challengeGroup[0].$add('user', user, { transaction });
 
     transaction.commit();
   } catch (e) {

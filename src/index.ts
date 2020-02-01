@@ -60,7 +60,7 @@ sequelize
       );
 
       // 0 0 * * * -> At 00:00 EveryDay
-      cron.schedule('* * * * * *', checkChallengeGroup);
+      cron.schedule('* * * * *', checkChallengeGroup);
     });
   })
   .catch(() => {

@@ -3,6 +3,7 @@ import clc from 'cli-color';
 import { Op } from 'sequelize';
 import moment from 'moment';
 import User from '../models/User';
+import Challenge from '../models/Challenge';
 
 const getTodayDate = () => {
   const date = new Date();
@@ -88,23 +89,22 @@ const checkCompleteChallengeGroup = async () => {
 
   await challengeGroups.forEach(async (challengeGroup: any) => {
     await challengeGroup.update({ status: 'COMPLETE' });
-    const challenge_group_id = challengeGroup.id;
 
-    const allUsers = await User.findAll({
-      where: { challenge_group: [Op.con] },
+    const allChallenge = await Challenge.findAll({
+      where: { challenge_group_id: challengeGroup.id },
     });
-
-    const successUsers = allUsers.filter(
-      (user: any) => user.achievement >= 0.8,
+    const successChallenge = allChallenge.filter(
+      (challenge: any) => challenge.achievement >= 0.8,
     );
 
     const dividedMoney =
-      (challengeGroup.price * allUsers.length) / successUsers.length;
+      successChallenge.length !== 0
+        ? (challengeGroup.price * allChallenge.length) / successChallenge.length
+        : 0;
 
-    console.log(clc.red(allUsers.length, successUsers.length));
-
-    await successUsers.forEach(async (user: any) => {
-      await user.update({ money: dividedMoney });
+    successChallenge.forEach(async (challenge: any) => {
+      const user = await challenge.$get('user');
+      await User.increment({ money: dividedMoney }, { where: { id: user.id } });
     });
   });
 };
@@ -144,9 +144,9 @@ const calculateChallengeGroupAchievement = async () => {
 };
 
 const cronjob = async () => {
+  await calculateChallengeGroupAchievement();
   await checkOngoingChallengeGroup();
   await checkCompleteChallengeGroup();
-  await calculateChallengeGroupAchievement();
 };
 
 export default cronjob;
