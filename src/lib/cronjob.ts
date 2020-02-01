@@ -93,16 +93,38 @@ const checkCompleteChallengeGroup = async () => {
     const allChallenge = await Challenge.findAll({
       where: { challenge_group_id: challengeGroup.id },
     });
+
+    // 100% refund for users with more than 27 certifications
     const successChallenge = allChallenge.filter(
-      (challenge: any) => challenge.achievement >= 0.8,
+      async (challenge: any) =>
+        (await challenge.$count('certification', {
+          where: { verification: 'SUCCESS' },
+        })) >= 27,
     );
 
-    const dividedMoney =
-      successChallenge.length !== 0
-        ? (challengeGroup.price * allChallenge.length) / successChallenge.length
-        : 0;
-
     successChallenge.forEach(async (challenge: any) => {
+      const user = await challenge.$get('user');
+      await User.increment(
+        { money: challengeGroup.price },
+        { where: { id: user.id } },
+      );
+    });
+
+    // People that have 31 certifications share money of failure people
+    const perfectChallenge = successChallenge.filter(
+      async (challenge: any) =>
+        (await challenge.$count('certification', {
+          where: { verification: 'SUCCESS' },
+        })) === 31,
+    );
+
+    if (perfectChallenge.length === 0) return;
+
+    const dividedMoney =
+      ((allChallenge.length - successChallenge.length) * challengeGroup.price) /
+      perfectChallenge.length;
+
+    perfectChallenge.forEach(async (challenge: any) => {
       const user = await challenge.$get('user');
       await User.increment({ money: dividedMoney }, { where: { id: user.id } });
     });
