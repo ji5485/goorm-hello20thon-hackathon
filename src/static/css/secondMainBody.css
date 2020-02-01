@@ -1,0 +1,7 @@
+.mainBody{
+    display:flex;
+}
+
+.mainBody > div {
+    flex: 1;
+}
