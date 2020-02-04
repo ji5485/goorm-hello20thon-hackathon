@@ -4,7 +4,6 @@ import Logger from 'koa-logger';
 import Helmet from 'koa-helmet';
 import BodyParser from 'koa-body';
 import { jwtMiddleware } from './lib/jwt';
-import api from './api';
 import { sequelize } from './sequelize';
 import clc from 'cli-color';
 import views from 'koa-views';
@@ -12,6 +11,7 @@ import serve from 'koa-static';
 import { join } from 'path';
 import cron from 'node-cron';
 import checkChallengeGroup from './lib/cronjob';
+import url from './urls';
 
 const app = new Koa();
 const router = new Router();
@@ -36,11 +36,8 @@ app
   .use(Helmet())
   .use(jwtMiddleware)
   .use(serve(__dirname + '/static'))
-  .use(router.routes())
-  .use(router.allowedMethods());
-router
-  .get('/', (ctx: any) => ctx.render(ctx.request.user ? 'Main' : 'Login'))
-  .use('/api', api.routes());
+  .use(url.routes())
+  .use(url.allowedMethods());
 
 const { green, red } = clc;
 const PORT: string | number = process.env.SERVER_PORT || 4000;

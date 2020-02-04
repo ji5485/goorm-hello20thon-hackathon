@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Login</title>
+    <link rel="stylesheet" href="css/loginBG.css" />
+    <link rel="stylesheet" href="css/loginNav.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="main">
+      <div class="mainNav">
+        <div class="mainNavLogo">작 심 3 1</div>
+        <div class="mainNavMenu">
+          <div style="color : #cccccc;">Home</div>
+          <div style="color : #cccccc;">Calendar</div>
+          <div style="color : #cccccc;">Graph</div>
+          <div style="color : #cccccc;">Refund</div>
+          <div style="color : #0081f8; font-weight : bold;">Sign in</div>
+        </div>
+      </div>
+      <div class="mainBody">
+        <img src="" alt="" />로고들어갈예정
+        <div class="loginTitle">Sign in to 작심31</div>
+        <form class="loginBody" method="POST" action="/login">
+          <div>Email address</div>
+          <input
+            type="email"
+            name="email"
+            value="<%= (!!locals.email) ? email : '' %>"
+          />
+          <div>Password</div>
+          <input type="password" name="password" />
+          <div><input type="submit" value="sign in" /></div>
+        </form>
+        <div class="loginFoot">
+          <div>
+            New to 작심31? <a href="firstMain.html">Create an account</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

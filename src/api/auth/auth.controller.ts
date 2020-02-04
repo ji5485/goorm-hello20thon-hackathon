@@ -18,6 +18,7 @@ export const register = async (ctx: any) => {
   if (result.error) {
     ctx.status = 400;
     ctx.body = generateResponse(false, result.error.details, null);
+    ctx.redirect('/');
     return;
   }
 
@@ -42,6 +43,7 @@ export const register = async (ctx: any) => {
       } already exists.`,
       null,
     );
+    ctx.redirect('/');
     return;
   }
 
@@ -55,6 +57,7 @@ export const register = async (ctx: any) => {
   }
 
   ctx.body = generateResponse(true, null, user);
+  await ctx.render('login', { path: '../../', email });
 };
 
 export const login = async (ctx: any) => {
@@ -71,6 +74,7 @@ export const login = async (ctx: any) => {
   if (result.error) {
     ctx.status = 400;
     ctx.body = generateResponse(false, result.error.details, null);
+    ctx.redirect('/login');
     return;
   }
 
@@ -88,6 +92,7 @@ export const login = async (ctx: any) => {
   if (!user || !user.validatePassword(password)) {
     ctx.status = 403;
     ctx.body = generateResponse(false, 'Email or password is invalid.', null);
+    ctx.redirect('/login');
     return;
   }
 
@@ -101,15 +106,19 @@ export const login = async (ctx: any) => {
       maxAge: 1000 * 60 * 60 * 24 * 3,
       httpOnly: true,
     });
-    ctx.body = generateResponse(true, null, {
+  } catch (e) {
+    ctx.throw(500, e);
+  }
+
+  await ctx.render('secondMain', {
+    path: '../../',
+    user: {
       id: user.id,
       email: user.email,
       username: user.username,
       money: user.money,
-    });
-  } catch (e) {
-    ctx.throw(500, e);
-  }
+    },
+  });
 };
 
 export const logout = async (ctx: any) => {
@@ -118,5 +127,5 @@ export const logout = async (ctx: any) => {
     httpOnly: true,
   });
   ctx.status = 204;
-  ctx.body = generateResponse(true, null, null);
+  ctx.redirect('/');
 };

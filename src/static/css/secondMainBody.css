@@ -1,7 +1,7 @@
-.mainBody{
-    display:flex;
+.mainBody {
+  display: flex;
 }
 
 .mainBody > div {
-    flex: 1;
+  width: 50%;
 }

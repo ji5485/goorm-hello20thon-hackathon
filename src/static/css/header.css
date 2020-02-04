@@ -1,0 +1,11 @@
+.header {
+  width: 100%;
+  padding: 40px 70px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__navbar a + a {
+  margin-left: 40px;
+}

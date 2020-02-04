@@ -5,6 +5,6 @@ const auth = new Router();
 
 auth.post('/signup', authController.register);
 auth.post('/login', authController.login);
-auth.post('/logout', authController.logout);
+auth.get('/logout', authController.logout);
 
 export default auth;

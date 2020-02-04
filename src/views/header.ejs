@@ -1,0 +1,19 @@
+<head>
+  <link rel="stylesheet" href="css/header.css" />
+</head>
+
+<div class="header">
+  <div class="header__logo">작 심 3 1</div>
+  <div class="header__navbar">
+    <a href="#" style="font-weight: bold">Home</a>
+    <a href="#" style="color : #cccccc;">Calendar</a>
+    <a href="#" style="color : #cccccc;">Graph</a>
+    <a href="#" style="color : #cccccc;">Refund</a>
+
+    <% if (!!locals.user) { %>
+    <a href="/logout" style="color : #0081f8">Sign Out</a>
+    <% } else { %>
+    <a href="/login" style="color : #0081f8">Sign in</a>
+    <% } %>
+  </div>
+</div>
