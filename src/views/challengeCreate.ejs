@@ -1,38 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>CreateChallenge</title>
-    <link rel="stylesheet" href="css/challengeCreate.css" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap"
-      rel="stylesheet"
-    />
-  </head>
 
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CreateChallenge</title>
+    <link rel="stylesheet" href="css/challengeCreate.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">    
+</head>
+
+<body>
     <div class="bg-modal">
-      <div class="modalContent">
-        <div class="challengeName">도전명</div>
-        <div><input type="text" placeholder="ex) 5kg 감량하기" /></div>
-        <div class="challengeDetail">일일 도전</div>
-        <div><input type="text" placeholder="ex) 20분 한강 걷고 오기" /></div>
-        <div class="challengeDate">
-          <div>시작일<br /><input type="date" /></div>
-          <div>종료일<br /><input type="date" /></div>
+        <div class="modalContent">
+            <div class="challengeName">도전명</div>
+            <div><input type="text" placeholder="ex) 5kg 감량하기"></div>
+            <div class="challengeDetail">일일 도전</div>
+            <div><input type="text" placeholder="ex) 20분 한강 걷고 오기"></div>
+            <div class="challengeDate">시작일</div>
+            <div><input type="date"></div>    
+            <div class="challengePrice">투자금</div>
+            <div class="challengePriceBtn">
+                <div><button>1만원</button></div>
+                <div><button>3만원</button></div>
+                <div><button>5만원</button></div>
+            </div>
+            <div class="challengeMake">
+                <input type="submit" value="챌린지개설">
+            </div>
         </div>
-        <div class="challengePrice">투자금</div>
-        <div class="challengePriceBtn">
-          <button>1만원</button>
-          <button>3만원</button>
-          <button>5만원</button>
-        </div>
-        <div class="challengeMake">
-          <input type="submit" value="챌린지개설" />
-        </div>
-      </div>
     </div>
-  </body>
+</body>
+
 </html>
