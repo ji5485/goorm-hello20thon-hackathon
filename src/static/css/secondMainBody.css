@@ -1,7 +1,56 @@
-.mainBody {
-  display: flex;
+.mainBody{
+    display:flex;
 }
 
 .mainBody > div {
-  width: 50%;
+    flex: 1;
+}
+
+.challengeContent{
+    justify-content: space-between;
+    display : flex;
+    padding : 3% 10% 0 15%;
+}
+
+.challengeList, .challengeContent{
+    font-weight : bold;
+}
+
+.challengeList{
+    font-size : 33px;
+}
+
+.challengeNum, .challengeTitle{
+    font-size : 25px;
+}
+
+.challengeDate{
+    font-size : 20px;
+    color : #cccccc;
+}
+
+.charts{
+    height : 10px; 
+    background:#cccccc; 
+    border-radius : 0;
+    opacity : 0.7;
+}
+
+.rowChart{
+    display : inline-block; 
+    width : 75%; /* 예를 건드려야됨. percent */
+    height : 100%;
+    line-height : 40px;
+    opacity : 0.7;
+    background : #0081f8;
+}
+        
+.chartPercent{
+    text-align : right;
+    color : #cccccc;
+}
+
+.challengeUpload{
+    text-align : center;
+    padding : 3% 0 0 0 ;
 }
