@@ -1,0 +1,41 @@
+.mainBody{
+    display : flex;
+}
+
+.mainBodyLeft{
+    width : 35%;
+    float : left;
+    padding-left : 1%;
+}
+
+.leftTitle, .rightTitle{
+    font-size : 25px;
+    font-weight : bold;
+}
+
+.leftWrite{
+    font-size : 15px;
+    font-weight : bold;
+    text-align : center;
+    padding-top : 5%;
+}
+
+.leftGraphPercent{
+    position : absolute;
+    font-weight : bold;
+    font-size : 35px;
+    left : 16%;
+    top  : 44.5%;
+}
+.mainBodyRight{
+    float : right;
+    width : 65%;
+    padding-right : 1%;
+}
+
+.rightWrite{
+    text-align : right;
+    font-size : 25px;
+    font-weight : bold;
+    padding-right : 5%;
+}
