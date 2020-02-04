@@ -1,0 +1,81 @@
+.main {
+  position: relative;
+}
+
+.mainBody {
+  display: flex;
+}
+
+.mainBodyLeft {
+  width: 35%;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 20px 0 0 20px;
+  background: #f1f3f5;
+  display: flex;
+  flex-direction: column;
+  padding: 13% 50px 0;
+}
+
+.leftTitle,
+.rightTitle {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.leftGraph {
+  position: relative;
+  margin-top: 50px;
+}
+
+.leftGraphPercent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  font-size: 30px;
+  padding-top: 8px;
+}
+
+.leftWrite {
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 5%;
+}
+
+.challenge {
+  margin-top: 40px;
+  display: flex;
+  overflow-x: auto;
+}
+
+.challenge_item {
+  cursor: pointer;
+  padding: 10px 15px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.challenge_item + .challenge_item {
+  margin-left: 20px;
+}
+
+.mainBodyRight {
+  width: 65%;
+  margin-left: auto;
+}
+
+.rightWrite {
+  text-align: right;
+  font-size: 25px;
+  font-weight: bold;
+  padding-right: 5%;
+}

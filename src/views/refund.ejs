@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/refund.css" />
+  </head>
+
+  <body>
+    <div class="main">
+      <%- include('header'); -%>
+
+      <div class="mainBody">
+        <div class="mainBodyLeft">
+          <div class="mainBodyLeftUp">
+            <div class="LeftUpTitle">
+              <span><%= user.username %></span>님, 수고하셨습니다.
+            </div>
+            <div class="LeftUpContent">
+              31일간 포기하지 않고, 하루씩 성실하게 도전하셨네요.<br />
+              목표를 완벽하네 이루는 것보다도, 하루의 변화만큼 발전한<br />
+              <%= user.username %>님의 내일을 응원합니다 :)
+            </div>
+          </div>
+
+          <div class="mainBodyLeftDown">
+            <div class="challenge">
+              <div class="challengeList">Challenge List</div>
+
+              <% challenge_list.forEach(function(challenge, index) { %>
+              <div
+                class="challengeContent"
+                onClick="setChallengeInfo(<%= challenge.price %>, <%= challenge.achievement * 100 %>, <%= index + 1 %>)"
+              >
+                <div>
+                  <div class="challengeNum">CH <%= index + 1 %></div>
+                  <div class="challengeDate">
+                    <%= moment(challenge.start_date).format('MM.DD'); %>
+                  </div>
+                </div>
+                <div class="border"></div>
+                <div class="challengeInfo">
+                  <div class="challengeInfoLeft">
+                    <div class="challengeTitle"><%= challenge.name %></div>
+                    <div class="chartContainer">
+                      <div class="charts">
+                        <div
+                          class="rowChart"
+                          style="width: <%= challenge.achievement * 100 %>%"
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="chartPercent">
+                    <%= challenge.achievement * 100 %>%
+                  </div>
+                </div>
+              </div>
+              <% }) %>
+            </div>
+          </div>
+        </div>
+        <div class="mainBodyRight">
+          <div class="mainBodyRightUp">
+            <div class="RightUpTitle">결과</div>
+            <div class="RightUpContainer">
+              <div class="RightUpContent">
+                CH<span class="RightUpContentNum"></span>의 결과
+              </div>
+              <hr />
+              <div class="RightUpContent2">
+                <div class="RightUpContent">투자금</div>
+                <div class="RightUpContentRight1"></div>
+              </div>
+              <div class="RightUpContent2">
+                <div class="RightUpContent">달성률</div>
+                <div class="RightUpContentRight2"></div>
+              </div>
+            </div>
+          </div>
+          <div class="mainBodyRightDown">
+            <div class="RightDownTitle">환급</div>
+            <div class="RightDownContainer">
+              <div class="RightDownContent">계좌번호</div>
+              <input type="text" />
+              <div class="RightDownContent">은행</div>
+              <input type="text" />
+              <div class="RightDownContent2">
+                <div>누적금액</div>
+                <div class="RightDownContentRight">00000원</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function setChallengeInfo(price, achievement, index) {
+        const RightUpContentNum = document.querySelector('.RightUpContentNum');
+        const RightUpContentRight1 = document.querySelector(
+          '.RightUpContentRight1',
+        );
+        const RightUpContentRight2 = document.querySelector(
+          '.RightUpContentRight2',
+        );
+
+        RightUpContentNum.innerHTML = index;
+        RightUpContentRight1.innerHTML = price + ' 원';
+        RightUpContentRight2.innerHTML = achievement + ' %';
+      }
+
+      <% if (challenge_list.length !== 0) { %>
+        setChallengeInfo(
+          "<%= challenge_list[0].price %>",
+          "<%= challenge_list[0].achievement * 100 %>",
+          1,
+        );
+      <% } %>
+    </script>
+  </body>
+</html>
