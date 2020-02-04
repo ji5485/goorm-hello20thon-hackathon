@@ -1,5 +1,4 @@
 import Koa from 'koa';
-import Router from 'koa-router';
 import Logger from 'koa-logger';
 import Helmet from 'koa-helmet';
 import BodyParser from 'koa-body';
@@ -14,7 +13,6 @@ import checkChallengeGroup from './lib/cronjob';
 import url from './urls';
 
 const app = new Koa();
-const router = new Router();
 
 app
   .use(

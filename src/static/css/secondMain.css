@@ -1,0 +1,159 @@
+.main {
+  position: relative;
+}
+
+.mainBody {
+  padding: 0;
+  align-items: stretch;
+}
+
+.mainBody__calendar {
+  width: 50%;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 20px 0 0 20px;
+  background: #f1f3f5;
+  padding-top: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 13%;
+}
+
+.tbtop {
+  width: 80%;
+  padding: 0 15px;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tbtop div {
+  display: flex;
+  align-items: center;
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+.tbtop div img {
+  margin-right: 15px;
+  height: 35px;
+}
+
+.tbtop div span + span {
+  margin-left: 30px;
+}
+
+#calendar {
+  width: 80%;
+}
+
+td {
+  font-size: 1.2rem;
+  text-align: center;
+  border: none;
+  padding: 15px;
+}
+
+.challenge {
+  width: 50%;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: 0;
+  border-radius: 0 20px 20px 0;
+  width: 50%;
+  margin-left: auto;
+  padding: 13% 50px 0;
+}
+
+.border {
+  margin: 0 20px;
+  width: 3px;
+  height: 100%;
+  background: black;
+}
+
+.challengeInfo {
+  flex: 1;
+  padding-right: 25px;
+}
+
+.challengeList {
+  font-weight: 700;
+  font-size: 1.7rem;
+  margin-bottom: 40px;
+}
+
+.challengeContent {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  font-weight: 700;
+  font-size: 1.7rem;
+  width: 90%;
+}
+
+.challengeContent + .challengeContent {
+  margin-top: 20px;
+}
+
+.challengeNum {
+  font-size: 23px;
+}
+
+.challengeTitle {
+  font-size: 20px;
+}
+
+.challengeDate {
+  font-size: 15px;
+  color: #cccccc;
+}
+
+.chartContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.charts {
+  width: 90%;
+  position: relative;
+  height: 10px;
+  background: #cccccc;
+  border-radius: 0;
+  opacity: 0.7;
+}
+
+.rowChart {
+  width: 50%;
+  position: absolute;
+  height: 100%;
+  background: #0081f8;
+  left: 0;
+}
+
+.chartPercent {
+  font-size: 12px;
+  text-align: right;
+  color: #cccccc;
+  margin-left: 5px;
+}
+
+.challenge_picture {
+  margin-left: auto;
+  height: 40px;
+}
+
+.challengeUpload {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.challengeUpload img {
+  height: 40px;
+}

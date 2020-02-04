@@ -8,7 +8,6 @@ import {
   HasMany,
 } from 'sequelize-typescript';
 import User from './User';
-import Category from './Category';
 import ChallengeGroup from './ChallengeGroup';
 import Certification from './Certification';
 
@@ -28,9 +27,6 @@ class Challenge extends Model<Challenge> {
 
   @BelongsTo(() => User, 'user_id')
   user!: User;
-
-  @BelongsToMany(() => Category, 'ChallengeCategory', 'category', 'challenge')
-  category!: Category[];
 
   @BelongsTo(() => ChallengeGroup, 'challenge_group_id')
   challenge_group!: ChallengeGroup;
