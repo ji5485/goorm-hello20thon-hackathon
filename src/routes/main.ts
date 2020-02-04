@@ -24,13 +24,22 @@ export const main = async (ctx: any) => {
         }),
       );
 
-      await ctx.render('secondMain', { user, challenge_list, moment });
+      await ctx.render('secondMain', {
+        user,
+        challenge_list,
+        moment,
+        active: 'Home',
+      });
     } catch (e) {
       ctx.throw(500, e);
     }
-  } else await ctx.render('firstMain');
+  } else await ctx.render('firstMain', { active: 'Home' });
 };
 
 export const login = async (ctx: any) => {
   await ctx.render('login');
+};
+
+export const graph = async (ctx: any) => {
+  await ctx.render('graph', { active: 'Graph' });
 };

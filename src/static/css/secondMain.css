@@ -67,7 +67,8 @@ td {
   border-radius: 0 20px 20px 0;
   width: 50%;
   margin-left: auto;
-  padding: 13% 50px 0;
+  padding: 13% 50px 50px;
+  overflow-y: auto;
 }
 
 .border {
@@ -98,7 +99,7 @@ td {
 }
 
 .challengeContent + .challengeContent {
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .challengeNum {
@@ -151,7 +152,7 @@ td {
 
 .challengeUpload {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 .challengeUpload img {

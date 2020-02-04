@@ -8,15 +8,17 @@
   </a>
 
   <div class="header__navbar">
-    <a href="#" style="font-weight: bold">Home</a>
-    <a href="#" style="color : #cccccc;">Calendar</a>
-    <a href="#" style="color : #cccccc;">Graph</a>
-    <a href="#" style="color : #cccccc;">Refund</a>
-
-    <% if (!!locals.user) { %>
-    <a href="/logout" style="color : #0081f8">Sign Out</a>
+    <% menu = [{name: "Home", link: "/"}, {name: "Calendar", link: "/calendar"},
+    {name: "Graph", link: "/graph"}, {name: "Refund", link: "/refund"}];
+    activeMenu = locals.active || "Home"; menu.forEach(function(item) { if
+    (item.name === activeMenu) { %>
+    <a href="<%= item.link %>" class="active"><%= item.name %></a>
     <% } else { %>
-    <a href="/login" style="color : #0081f8">Sign in</a>
+    <a href="<%= item.link %>"><%= item.name %></a>
+    <% }}) %> <% if (!!locals.user) { %>
+    <a href="/logout">Sign Out</a>
+    <% } else { %>
+    <a href="/login">Sign in</a>
     <% } %>
   </div>
 </div>

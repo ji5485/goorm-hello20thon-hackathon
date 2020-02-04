@@ -8,10 +8,23 @@
   z-index: 100;
 }
 
+.header__logo img {
+  height: 45px;
+}
+
+.header__navbar a {
+  color: #cccccc;
+}
+
+.header__navbar a.active {
+  font-weight: 700;
+  color: black;
+}
+
 .header__navbar a + a {
   margin-left: 40px;
 }
 
-.header__logo img {
-  height: 45px;
+.header__navbar a:last-child {
+  color: #0081f8;
 }
